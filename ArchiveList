@@ -1,0 +1,14 @@
+public class ArchiveList {
+    public static void main(String[] args) throws IOException {
+        String directory = "/Users/mariavorobeva/Desktop/Test";
+        Path path = Paths.get(directory);
+        Files.walkFileTree(path, new SimpleFileVisitor<>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                if (file.toString().endsWith(".zip"))
+                    System.out.println(file);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+    }
+}
